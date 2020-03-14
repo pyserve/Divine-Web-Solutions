@@ -1,0 +1,339 @@
+html,body{
+  position: relative;
+}
+nav{
+  border-bottom: 2px solid orangered;
+}
+.navbar-container{
+  transition: all 1s ease-in-out;
+}
+.menubar{
+  display: none;
+}
+.navbar-menu ul li{
+  padding: 15px 10px;
+}
+.navbar-menu ul li:hover{
+  background-color: rgb(245, 197, 66);
+  cursor: pointer;
+}
+.carousel-caption{
+  top: 25%;
+  bottom: auto;
+}
+.preloader{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: #fff;
+  z-index: 1000;
+}
+.preloader div{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.scrolltopbtn{
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 100;
+  cursor: pointer;
+}
+.scrolltopbtn button{
+  padding-top: 10px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-color: #000;
+  opacity: 0.7;
+  border: 1px solid lime;
+}
+.quickmenu{
+  transition: all 0.2s linear;
+}
+.quickmenu li:hover{
+  padding-left: 5px;
+}
+.mainbgimg{
+  width: 100%;
+  height: 510px;
+  object-fit: cover;
+}
+.headerunderline{
+  width: 200px;
+  height: 2px;
+  background: orange;
+}
+.textunderline{
+  width: 100px;
+  height: 2px;
+  background: orange;
+}
+.textunderline-sm{
+  width: 75px;
+  height: 2px;
+  background: orange;
+}
+.footermenu-underline{
+  width: 90px;
+  height: 1px;
+  background: orange; 
+}
+.sociallink li{
+  display: inline-block;
+}
+/*Services Css*/
+.serviceicon{
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  object-position: center;
+}
+.serviceslist{
+  transition: all 0.5s linear;
+}
+.serviceslist:hover{
+  cursor: default;
+  color: #fff;
+  background: linear-gradient(to right,red 6%, green 41%,rgb(6, 201, 52) 53%);
+  background-size: 200% 100%;
+  background-position:right bottom;
+}
+.servicename:hover{
+  cursor: pointer;
+  color: yellow;
+}
+/*Gallery Css*/
+.gallery-sm{
+  display: none;
+}
+.gallery-image{
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+.gallery-image-indicator{
+  bottom: -60px;
+}
+.gallery-image-indicator li{
+  background-color: green;
+  height: 7px;
+}
+
+/*Blog Css*/
+.postimg{
+  width: 100%;
+  min-height: 320px;
+  object-fit: cover;
+}
+.postmedia{
+  position: relative;
+  color: #fff;
+  cursor: default;
+}
+.mediapreview{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 100;
+  opacity: 1.0;
+  display: none;
+}
+.mediapreview span{
+  cursor: pointer;
+}
+.postimagehover{
+  transition: all 0.3s linear;
+}
+.postmedia:hover .postimagehover{
+  filter: brightness(25%);
+}
+.postmedia:hover .mediapreview{
+  display: block;
+}
+.recentpostlink{
+  transition: all 0.2s linear; 
+}
+.recentpostlink:hover{
+  padding-left: 5px; 
+  background: #f0f0f0;
+}
+.postsearchform button,.postsearchform input{
+  border:none;
+}
+.commentform button,.commentform input{
+  border:none;
+}
+.postsearchform span{
+  border: 1px solid lightgray;
+  border-radius: 10px 10px;
+}
+.commentform span{
+  border: 1px solid lightgray;
+  border-radius: 5px 5px;
+}
+.postfeed{
+  list-style: none;
+  padding: 0px;
+}
+.postfeed li{
+  display: inline-block;
+  padding-right: 15px;
+}
+.likepost{
+  cursor: pointer;
+}
+/*Contatc Css*/
+.mapouter{
+  position:relative;
+  text-align:right;
+  height:400px;
+  width:100%;
+}
+.gmap_canvas {
+  overflow:hidden;
+  background:none!important;
+  height:400px;
+  width:100%;
+}
+/*ChatBox Css*/
+.chatcontainer{
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  left: 30px;
+  z-index: 100;
+  cursor: pointer;
+}
+.chat-popup{
+  position: fixed;
+  left: 15px;
+  bottom: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid gray;
+  z-index: 100;
+  display: none;
+}
+.msgbody{
+  height: 320px;
+  background: #fff;
+}
+.openchatbtn{
+  position: fixed;
+  left: 30px;
+  bottom: 20px;
+  z-index: 100;
+  display: block;
+  opacity: 0.8;
+}
+.closechatbtn{
+  cursor: pointer;
+  opacity: 0.8;
+}
+.closechatbtn:hover{
+  opacity: 1.0;
+}
+/*Login Css*/
+.loginform input{
+  border:none;
+  border-bottom: 1px solid gray;
+  background-color: rgb(50, 59, 74);
+  color: #f0f0f0;
+}
+.loginform input:focus{
+  background-color: rgb(50, 59, 74);
+  color: #fff;
+}
+.loginform button{
+  border-radius: 15px 15px;
+  -webkit-border-radius: 15px 15px;
+  -moz-border-radius: 15px 15px;
+  -o-border-radius: 15px 15px;
+}
+.login-bg{
+  position: relative;
+  width: 100%;
+  background: linear-gradient(to right,pink 1%, green 99%);
+  background-size: 200% 100%;
+  min-height: 100vh;
+}
+.login-container{
+  min-height: 400px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  background-color: rgb(50, 59, 74);
+  color: rgb(255,255,255);
+}
+.login-enhancer{
+  position: relative;
+  min-height: 400px;
+  color: rgb(255,255,255);
+}
+.login-enhancer-body{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: #000;
+  opacity: 0.4;
+  z-index: 10;
+}
+.login-enhancer-desc{
+  width: 90%;
+  position: absolute;
+  top: 25%;
+  text-align: center;
+  opacity: 1.0;
+  z-index: 100
+}
+/*Register Css*/
+.register-bg{
+  background: linear-gradient(to right,pink 1%, green 99%);
+  background-size: 200% 100%;
+  min-height: 100vh;
+  color: #fff;
+}
+.register-container{
+  padding-bottom: 25px;
+}
+.registerform input{
+  background: none;
+  border:none;
+  border-bottom: 1px solid gray;
+  color: #f0f0f0;
+}
+.registerform input:focus{
+  background: none;
+  color: #fff;
+}
+/*message Css*/
+.error{
+  color: orangered;
+}
+
+@media(max-width: 768px){
+  footer{
+    text-align: center;
+  }
+  .mainbgimg{
+    height: 100%;
+  }
+  .openchatbtn{
+    display: none;
+  }
+  .gallery-sm{
+    display: block;
+  }
+  .gallery-lg{
+    display: none;
+  }
+  .menubar{
+    display: block;
+  }
+}

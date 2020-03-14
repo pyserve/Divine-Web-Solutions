@@ -1,0 +1,127 @@
+{%extends 'siteapp/base.html'%}
+{%load static%}
+{%block title%}Divine | Blog{%endblock%}
+{%block homeactive%}{%endblock%}
+{%block servicesactive%}{%endblock%}
+{%block galleryactive%}{%endblock%}
+{%block blogactive%}active font-weight-bold{%endblock%}
+{%block contactactive%}{%endblock%}
+{%block content%}
+<div class="container">
+	<div class="row">
+		<div class="col-md-7">
+		{%if post%}
+		  <div class="card my-2 pt-2">
+			<div>
+				{%for file in post.file.all%}
+					{%if forloop.first%}
+					{%if file.image%}
+					<img src="{{file.image.url}}" class="postimg">
+					{%endif%}
+					{%if file.video%}
+					<video src="{{file.video.url}}" controls class="postimg" poster="{%if file.poster%}{{file.poster.url}}{%endif%}"></video>
+					{%endif%}
+					{%endif%}
+				{%endfor%}
+			</div>
+			<div class="h5 px-2 font-weight-bold">{{post.title}}</div>
+			<p class="px-2">{{post.description}}</p>
+			<div class="row px-3">
+				<ul class="postfeed">
+					<li class="nav-item">
+						<big><span class="fa fa-user"></span></big> {{post.user.username}}
+					</li>
+					<li class="nav-item">
+						<div class="{{post.id}} likepost 
+						{%for postlike in postlikes%}
+							{%if postlike.user == request.user%}
+								{%if postlike.post == post%} 
+									{%if postlike.liked == True%}text-primary{%endif%}
+								{%endif%}
+							{%endif%}
+						{%endfor%}">
+							<big><span class="fa fa-thumbs-up"></span></big> 
+							<span class="likecount">{{post.likes}}</span>
+						</div>
+					</li>
+					<li class="nav-item">
+						<big><span class="fa fa-comment"></span></big> 
+						<span class="commentcount">{{post.comments}}</span>
+					</li>
+				</ul>
+				<div class="ml-auto"><span class="fa fa-history"></span> {{post.created_on.date}}</div>
+			</div>
+			{%if request.user.is_authenticated%}
+			<audio src="{%static 'blog/beep.mp3'%}" style="display: none;" id="commentsound"></audio>
+			<div class="">
+				<form class="commentform" method="post" autocomplete="off">{%csrf_token%}
+					<span class="d-flex">
+						<input type="text" name="comment" placeholder="Write a comment." class="form-control comment" autocomplete="off">
+						<input type="text" name="postid" value="{{post.id}}" class="form-control" style="display: none;">
+						<button type="submit" class="btn btn-light commentbtn"><span class="fa fa-send"></span></button>
+					</span>
+				</form>
+			</div>
+			{%else%}
+			<div class="px-2 small">
+				<span class="fa fa-info-circle"></span>
+				<span class="text-info"> Please login to make a comment on this post!</span>
+			</div>
+			{%endif%}
+			<div class="showblogcomment">
+				{%if postcomments%}
+				<div class="px-2 my-1 text-dark font-weight-bold small">Recent Comments</div>
+				<ul class="p-0 m-0" style="list-style: none;">
+					{%for postcomment in postcomments%}
+						{%if forloop.counter < 10%}
+						<li class="p-2">
+							<a href="/profile/{{request.user.id}}/" class="anchor">
+								<span class="fa fa-user-circle"></span>
+								<b><span class="text-capitalize">{{postcomment.user.username}}</span></b>
+							</a>
+							<div class="ml-4">
+								<span class="text-dark">{{postcomment.comment}}</span>
+								<small>&emsp;{{postcomment.created_on.time}}</small>
+							</div>
+						</li>
+						{%endif%}
+					{%endfor%}
+				</ul>
+				{%else%}
+				<div class="nocommentyet">
+					<div class="px-2 my-1 text-dark small">Be the first to comment on the post.</div>
+				</div>
+				{%endif%}
+			</div>
+		  </div>
+		 {%endif%}
+		</div>
+		<div class="col-md-5">
+			<div class="my-3">
+				<div class="h5 mt-2">Recent Articles<p class="textunderline"></p></div>
+				<ul class="navbar-nav">
+					{%for post in recentposts%}
+						<li class="nav-item">
+							<a href="/blog/{{post.id}}/" class="nav-link recentpostlink">
+								<span class="fa fa-chevron-right"></span> {{post.title}}
+							</a>
+						</li>
+					{%endfor%}
+				</ul>
+			</div>
+			<div class="my-3">
+				<div class="h5 mt-2">Popular Articles<p class="textunderline"></p></div>
+				<ul class="navbar-nav">
+					{%for post in popularposts%}
+					<li class="nav-item">
+						<a href="/blog/{{post.id}}/" class="nav-link recentpostlink">
+							<span class="fa fa-chevron-right"></span> {{post.title}}
+						</a>
+					</li>
+					{%endfor%}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{%endblock%}

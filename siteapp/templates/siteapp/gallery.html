@@ -1,0 +1,184 @@
+{%extends 'siteapp/base.html'%}
+{%load static%}
+{%block title%}Divine | Gallery{%endblock%}
+{%block homeactive%}{%endblock%}
+{%block servicesactive%}{%endblock%}
+{%block galleryactive%}active font-weight-bold{%endblock%}
+{%block blogactive%}{%endblock%}
+{%block contactactive%}{%endblock%}
+{%block content%}
+{%if medias%}
+<div class="container my-4  gallery-lg">
+	<div id="carouselExampleIndicators" class="carousel slide my-5" data-ride="carousel">
+	  <ol class="carousel-indicators gallery-image-indicator">
+	  	{%if medias|length > 4%}
+	  		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+	  		<li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
+	  		{%if medias|length > 8%}
+	  		<li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
+	  		{%endif%}
+	  		{%if medias|length > 12%}
+	  		<li data-target="#carouselExampleIndicators" data-slide-to="3" class=""></li>
+	  		{%endif%}	
+	  	{%endif%}
+	  </ol>
+	  <div class="carousel-inner">
+	    <div class="carousel-item active">
+	    	<div class="row">
+		      {%for media in medias%}
+		      	{%if forloop.counter > 0 and forloop.counter < 5%}
+		      	<div class="col-md-3 p-0">
+		      		<img class="d-block w-100 gallery-image" src="{{media.image.url}}" alt="First slide">
+		      	</div>
+		      	{%endif%}
+		      {%endfor%}
+	    	</div>
+	    </div>
+	    {%if medias|length > 4%}
+	    <div class="carousel-item">
+	    	<div class="row">
+		      {%for media in medias%}
+		      	{%if forloop.counter > 4 and forloop.counter < 9%}
+		      	<div class="col-md-3 p-0">
+		      		<img class="d-block w-100 gallery-image" src="{{media.image.url}}" alt="First slide">
+		      	</div>
+		      	{%endif%}
+		      {%endfor%}
+	    	</div>
+	    </div>
+	    {%endif%}
+	    {%if medias|length > 8%}
+	    <div class="carousel-item">
+	    	<div class="row">
+		      {%for media in medias%}
+		      	{%if forloop.counter > 8 and forloop.counter < 13%}
+		      	<div class="col-md-3 p-0">
+		      		<img class="d-block w-100 gallery-image" src="{{media.image.url}}" alt="First slide">
+		      	</div>
+		      	{%endif%}
+		      {%endfor%}
+	    	</div>
+	    </div>
+	    {%endif%}
+	  </div>
+	  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+	</div>
+</div>
+{%else%}
+	<div class="h5 my-5 text-center">No Media Posted.</div>
+{%endif%}
+
+{%if medias%}
+<div class="container my-5 gallery-sm">
+	{%if medias|length > 1%}
+	<div id="carouselExampleIndicators0" class="carousel slide my-5" data-ride="carousel">
+	  <ol class="carousel-indicators gallery-image-indicator">
+	  	{%if medias|length > 5%}
+		  	<li data-target="#carouselExampleIndicators0" data-slide-to="0" class="active"></li>
+		  	<li data-target="#carouselExampleIndicators0" data-slide-to="1" class=""></li>
+		  	{%if medias|length > 6%}
+		  	<li data-target="#carouselExampleIndicators0" data-slide-to="2" class=""></li>
+		  	{%endif%}
+		  	{%if medias|length > 7%}
+		  	<li data-target="#carouselExampleIndicators0" data-slide-to="3" class=""></li>
+		  	{%endif%}
+		{%endif%}
+	  </ol>
+	  <div class="carousel-inner">
+	    {%for media in medias%}
+	  		{%if forloop.counter > 0 and forloop.counter < 5%}
+		    <div class="carousel-item {%if forloop.counter == 1%}active{%endif%}">
+		    	<img class="d-block w-100 gallery-image" src="{{media.image.url}}" alt="Slide-{{media.id}}">
+		    </div>
+		    {%endif%}
+	    {%endfor%}
+	  </div>
+	  <a class="carousel-control-prev" href="#carouselExampleIndicators0" role="button" data-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="carousel-control-next" href="#carouselExampleIndicators0" role="button" data-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+	</div>
+	{%endif%}
+
+	{%if medias|length > 4%}
+	<div id="carouselExampleIndicators1" class="carousel slide my-5" data-ride="carousel">
+	  <ol class="carousel-indicators gallery-image-indicator">
+	  	{%if medias|length > 5%}
+		  	<li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+		  	<li data-target="#carouselExampleIndicators1" data-slide-to="1" class=""></li>
+		  	{%if medias|length > 6%}
+		  	<li data-target="#carouselExampleIndicators1" data-slide-to="2" class=""></li>
+		  	{%endif%}
+		  	{%if medias|length > 7%}
+		  	<li data-target="#carouselExampleIndicators1" data-slide-to="3" class=""></li>
+		  	{%endif%}
+		{%endif%}
+	  </ol>
+	  <div class="carousel-inner">
+	    {%for media in medias%}
+	  		{%if forloop.counter > 4 and forloop.counter < 9%}
+		    <div class="carousel-item {%if forloop.counter == 5%}active{%endif%}">
+		    	<img class="d-block w-100 gallery-image" src="{{media.image.url}}" alt="Slide-{{media.id}}">
+		    </div>
+		    {%endif%}
+	    {%endfor%}
+	  </div>
+	  <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+	</div>
+	{%endif%}
+	{%if medias|length > 8%}
+	<div id="carouselExampleIndicators2" class="carousel slide my-5" data-ride="carousel">
+	  <ol class="carousel-indicators gallery-image-indicator">
+	  	{%if medias|length > 9%}
+		  	<li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+		  	<li data-target="#carouselExampleIndicators2" data-slide-to="1" class=""></li>
+		  	{%if medias|length > 10%}
+		  	<li data-target="#carouselExampleIndicators2" data-slide-to="2" class=""></li>
+		  	{%endif%}
+		  	{%if medias|length > 11%}
+		  	<li data-target="#carouselExampleIndicators2" data-slide-to="3" class=""></li>
+		  	{%endif%}
+		{%endif%}
+	  </ol>
+	  <div class="carousel-inner">
+	    {%for media in medias%}
+	  		{%if forloop.counter > 8 and forloop.counter < 13%}
+		    <div class="carousel-item {%if forloop.counter == 9%}active{%endif%}">
+		    	<img class="d-block w-100 gallery-image" src="{{media.image.url}}" alt="Slide-{{media.id}}">
+		    </div>
+		    {%endif%}
+	    {%endfor%}
+	  </div>
+	  <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+	</div>
+	{%endif%}
+</div>
+{%else%}
+	<div class="h5 my-5 text-center">No Media Posted.</div>
+{%endif%}
+{%endblock%}

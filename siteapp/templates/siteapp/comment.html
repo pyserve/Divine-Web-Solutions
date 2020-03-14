@@ -1,0 +1,16 @@
+{%load static%}
+<ul class="p-0 m-0" style="list-style: none;">
+	<li class="p-2">
+		<a href="/profile/{{request.user.id}}/" class="anchor">
+			<span class="fa fa-user-circle"></span>
+			<b><span class="text-capitalize">{{request.user.username}}</span></b>
+		</a>
+		<div class="ml-4">
+			<span class="text-dark">{{postcomment.comment}}</span>
+			<small>&emsp;{{postcomment.created_on.time}}</small>
+		</div>
+	</li>
+</ul>
+<script type="text/javascript">
+	$(".commentcount").html({{comments}});
+</script>

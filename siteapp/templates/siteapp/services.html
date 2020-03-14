@@ -1,0 +1,63 @@
+{%extends 'siteapp/base.html'%}
+{%load static%}
+{%block title%}Divine | Services{%endblock%}
+{%block homeactive%}{%endblock%}
+{%block servicesactive%}active font-weight-bold{%endblock%}
+{%block galleryactive%}{%endblock%}
+{%block blogactive%}{%endblock%}
+{%block contactactive%}{%endblock%}
+{%block content%}
+<div class="container">
+	{%if services%}
+	<div class="row card my-3" style="border:none;border-bottom: 1px solid orangered;">
+		<div class="card-body">
+			<div class="h4 card-title">Our Major Services</div>
+		</div>
+	</div>
+	<div class="row text-center mx-1">
+		{%for service in services%}
+		<div class="col-md-4 card px-1 py-5 my-2 serviceslist">
+			<div><img src="{{service.logo.url}}" class="serviceicon"></div>
+			<div class="h5 my-3 servicename">{{service.name}}</div>
+			<p class="">{{ service.description | truncatewords:10 }}</p>
+		</div>
+		{%endfor%}
+	</div>
+	{%endif%}
+
+	<div class="row card my-3" style="border:none;border-bottom: 1px solid orangered;">
+		<div class="card-body">
+			<div class="h4 card-title">Our Services Main Focus</div>
+		</div>
+	</div>
+	<div class="row text-center mx-1">
+		<div class="col-md-4 card px-1 py-5 my-2">
+			<div><img src="{%static 'blog/img/planned.png'%}" class="serviceicon"></div>
+			<div class="h5 my-3">Carefully Planned</div>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip 
+			</p>
+		</div>
+		<div class="col-md-4 card px-1 py-5 my-2">
+			<div><img src="{%static 'blog/img/design1.jpg'%}" class="serviceicon"></div>
+			<div class="h5 my-3">Perfectly Designing</div>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip 
+			</p>
+		</div>
+		<div class="col-md-4 card px-1 py-5 my-2">
+			<div><img src="{%static 'blog/img/execute.jpg'%}" class="serviceicon"></div>
+			<div class="h5 my-3">Smartly Execution</div>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip 
+			</p>
+		</div>
+	</div>
+</div>
+{%endblock%}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>{%block title%}Branding{%endblock%}</title>
+	<script type="text/javascript" src="{%static 'blog/js/jquery.js'%}"></script>
+	<script type="text/javascript" src="{%static 'blog/js/script.js'%}"></script>
+	<script type="text/javascript" src="{%static 'blog/js/bootstrap.min.js'%}"></script>
+	<link rel="shortcut icon" type="text/css" href="{%static 'blog/logodesign/profile1.jpg'%}">
+	<link rel="stylesheet" type="text/css" href="{%static 'blog/css/bootstrap.min.css'%}">
+	<link rel="stylesheet" type="text/css" href="{%static 'blog/css/font-awesome.min.css'%}">
+	<link rel="stylesheet" type="text/css" href="{%static 'blog/css/style.css'%}">
+	{%block header%}{%endblock%}
+</head>
+{%block body%}
+<body>
+	<div class="preloader-container">
+		<div class="preloader">
+		    <div><img src="{%static 'blog/img/loader/Preloader_2.gif'%}"></div>
+		</div>
+	</div>
+	{%block navbar%}
+	{%block navbar1%}
+	<div class="navbar navbar-expand navbar-light shadow-sm p-0" style="background: rgb(245, 230, 132);border-bottom: 1px solid lightgray;">
+		<div class="container text-light">	
+			<div class="mr-auto pl-1">
+				<ul class="navbar-nav">
+					{%if not request.user.is_authenticated%}
+					<li class="nav-item">
+						<a href="/accounts/login/" class="nav-link">
+							<span class="fa fa-sign-in"></span> Login
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/accounts/register/" class="nav-link">
+							<span class="fa fa-user"></span> Register
+						</a>
+					</li>
+					{%else%}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="account" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				        	<span class="fa fa-user-circle"></span>  
+				        	<span style="font-size:15px;">{{request.user.first_name}} {{request.user.last_name}}</span>
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="account" style="border-bottom: 1px solid lime;">
+				          <a class="dropdown-item" href="/accounts/logout/">Logout</a>
+				          <a class="dropdown-item" href="/accounts/profile/">Profile</a>
+				        </div>						
+					</li>
+					{%endif%}
+				</ul>
+			</div>
+			<div class="ml-auto pr-1">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a href="https://www.facebook.com/aneildhakal451" class="nav-link py-1">
+							<span class="fa fa-facebook"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://www.instagram.com/aneil_dhakal451" class="nav-link py-1">
+							<span class="fa fa-instagram"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://www.twitter.com/DhakalAneil" class="nav-link py-1">
+							<span class="fa fa-twitter"></span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link py-1">
+							<span class="fa fa-youtube"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	{%endblock%}
+	<div class="navbar-container" style="width:100%">
+	{%block navbar2%}
+	<nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background: #fff;">
+		<div class="container">
+			<a class="navbar-brand" href="/home/">
+				<div class="row align-items-center">
+					<div class="ml-1 text-left">
+						<img src="{%static 'blog/logodesign/logo1.jpg'%}" width="160" class="rounded"><br>
+					</div>
+				</div>
+			</a>
+			{%block navbar2-menubar%}
+			<button class="navbar-toggler menubar" type="button" data-toggle="collapse" data-target="#navbarNav" 		aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			</button>
+			{%endblock%}
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="mx-1">
+						<div class="d-flex align-items-center">
+							<div class="h3 px-2" style="color: rgb(252, 186, 3);"><span class="fa fa-history"></span></div>
+							<div class="px-2">
+								<div class="font-weight-bold py-0">Opening Time</div>
+								<div>9:00 AM To 5:00 PM</div>
+							</div>
+						</div>
+					</li>
+					<li class="mx-1">
+						<div class="d-flex align-items-center">
+							<div class="h3 px-2" style="color: rgb(252, 186, 3);"><span class="fa fa-envelope"></span></div>
+							<div class="px-2">
+								<div class="font-weight-bold py-0">Email Us</div>
+								<div>aneildhakal21@gmail.com</div>
+							</div>
+						</div>
+					</li>
+					<li class="mx-1">
+						<div class="d-flex align-items-center">
+							<div class="h3 px-2" style="color: rgb(252, 186, 3);"><span class="fa fa-phone"></span></div>
+							<div class="px-2">
+								<div class="font-weight-bold py-0">Call Us Now</div>
+								<div>+977-9808777820</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	{%endblock%}
+	{%block navbar3%}
+	<div class="navbar navbar-expand-md navbar-light shadow-sm p-0 navbar-menu" style="background: rgb(252, 186, 3);">
+		<div class="container">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item mr-3 {%block homeactive%}active{%endblock%}">
+						<a href="/home/" class="nav-link">Home</a>
+					</li>
+					<li class="nav-item mr-3 {%block servicesactive%}{%endblock%}">
+						<a class="nav-link" href="/services/">Services</a>
+					</li>
+					<li class="nav-item mr-3 {%block galleryactive%}{%endblock%}">
+						<a href="/gallery/" class="nav-link">Gallery</a>
+					</li>
+					<li class="nav-item mr-3 {%block blogactive%}{%endblock%}">
+						<a href="/blog/" class="nav-link">Blog</a>
+					</li>
+					<li class="nav-item mr-3 {%block contactactive%}{%endblock%}">
+						<a href="/contact/" class="nav-link">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	{%endblock%}
+	</div>
+	{%endblock%}
+	{%if messages%}
+		{%for message in messages%}
+		<div class="alert alert-success alert-dismissible m-0">
+		  	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  	<span class="text-info fa fa-check-circle"></span>
+		  	<span class="text-info small">{{message}}</span>
+		</div>
+		{%endfor%}
+	{%endif%}
+	{%block content%}
+	{%endblock%}
+
+	{%block footer%}
+	<footer class="bg-dark py-3">
+		<div class="container text-light">
+			<div class="row justify-content-center">
+				<div class="col-md-4 text-center">
+					<div class="h5">
+						<img src="{%static 'blog/logodesign/default1.jpg'%}" width="35%" class="rounded">
+					</div>
+					<p>We are here to help you</p>
+				</div>
+				<div class="col-md-4">
+					<div class="h5">Quick Menus</div>
+					<ul style="list-style: none;" class="navbar-nav quickmenu p-0">
+						<li class="nav-item">
+							<a href="/services/" class="nav-link">
+								<span class="fa fa-chevron-right"></span> Services
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="/gallery/" class="nav-link">
+								<span class="fa fa-chevron-right"></span> Gallery
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="/blog/" class="nav-link">
+								<span class="fa fa-chevron-right"></span> Blog
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="/contact/" class="nav-link">
+								<span class="fa fa-chevron-right"></span> Contact
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<div class="h5">Stay Tuned With Us</div>
+					<ul style="list-style: none;" class="sociallink p-0">
+						<li class="nav-item"><a href="https://www.facebook.com/aneildhakal451" class="nav-link"><span class="fa fa-facebook"></span></a></li>
+						<li class="nav-item"><a href="https://www.instagram.com/aneil_dhakal451" class="nav-link"><span class="fa fa-instagram"></span></a></li>
+						<li class="nav-item"><a href="https://www.twitter.com/DhakalAneil" class="nav-link"><span class="fa fa-twitter"></span></a></li>
+						<li class="nav-item"><a href="https://www.facebook.com/aneildhakal451" class="nav-link"><span class="fa fa-linkedin"></span></a></li>
+					</ul>
+					<div>
+						<small><span class="fa fa-envelope"></span>
+							sumanbhatta2055@gmail.com
+						</small>
+						<br>
+						<small><span class="fa fa-envelope"></span>
+							aneildhakal21@gmail.com
+						</small>
+					</div>
+				</div>
+			</div>
+			<div class="text-center pt-2">
+				<br>
+				<div><img src="{%static 'blog/logodesign/profile1.jpg'%}" width="25" height="25" class="rounded"></div>
+				Divine Web Solutions, Copyright&copy;2020
+				<br>
+				<small>All Rights Reserved</small>
+			</div>
+		</div>
+	</footer>
+	{%endblock%}
+	<div class="scrolltopbtn">
+		<button class="btn btn-warning"><span class="fa fa-chevron-up"></span></button>
+	</div>
+
+	{%block chatbot%}
+	<div class="chat-popup rounded p-2" id="chatform">
+		<div class="row justify-content-between mx-1" style="border-bottom: 1px solid lightgray;">
+			<div class="h5"><small><span class="fa fa-circle text-success"></span></small> Chat</div>
+			<div class="h5 closechatbtn"><span class="fa fa-close"></span></div>
+		</div>
+		<div class="msgbody">
+			<div class="text-dark text-center py-2">Hello! how can we help you?</div>
+		</div>
+	    <form action="" class="form-container" style="border-top: 1px solid lightgray">	    
+	    	<span class="d-flex">
+		    	<input type="text" name="msg" placeholder="Write a message.." class="form-control">
+		    	<button type="submit" class="btn btn-light"><span class="fa fa-send"></span></button>
+		    </span>
+	  </form>
+	</div> 
+	<div class="openchatbtn">
+		<button class="btn btn-success">
+			<span class="fa fa-comment"></span> Chat
+		</button>
+	</div>
+	{%endblock%}
+</body>
+{%endblock%}
+</html>

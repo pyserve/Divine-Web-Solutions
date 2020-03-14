@@ -1,0 +1,118 @@
+{%extends 'siteapp/base.html'%}
+{%load static%}
+{%block title%}Divine | Blog{%endblock%}
+{%block homeactive%}{%endblock%}
+{%block servicesactive%}{%endblock%}
+{%block galleryactive%}{%endblock%}
+{%block blogactive%}active font-weight-bold{%endblock%}
+{%block contactactive%}{%endblock%}
+{%block content%}
+<div class="container">
+	<div class="row my-2">
+		<div class="col-md-7">
+			<div class="my-3">
+				<form class="postsearchform">
+					<span class="d-flex">
+						<input type="text" name="query" placeholder="search post" class="form-control">
+						<button class="btn btn-lign"><i class="fa fa-search"></i></button>
+					</span>
+				</form>
+			</div>
+		{%if posts%}
+		  {%for post in posts%}
+		  <div class="card my-2 pt-2">
+			<div class="h5 px-2">{{post.title}}</div>
+			<p class="px-2">{{post.description | truncatewords:25}}</p><br>
+			<div class="postmedia">
+				{%for file in post.file.all%}
+					{%if forloop.first%}
+					{%if file.image%}
+					<img src="{{file.image.url}}" class="postimg postimagehover">
+					<div class="h1 mediapreview"><span class="fa fa-eye" id="{{post.id}}"></span></div>
+					{%endif%}
+					{%if file.video%}
+					<video src="{{file.video.url}}"  class="postimg postimagehover" poster="{%if file.poster%}{{file.poster.url}}{%endif%}"></video>
+					<div class="h1 mediapreview"><span class="fa fa-play-circle" id="{{post.id}}"></span></div>
+					{%endif%}
+					{%endif%}
+				{%endfor%}
+			</div>
+			<div class="row px-3">
+				<ul class="postfeed">
+					<li class="nav-item">
+						<big><span class="fa fa-user"></span></big> {{post.user.username}}
+					</li>
+					<li class="nav-item">
+						<div class="{{post.id}} likepost 
+						{%for postlike in postlikes%}
+							{%if postlike.user == request.user%}
+								{%if postlike.post == post%} 
+									{%if postlike.liked == True%}text-primary{%endif%}
+								{%endif%}
+							{%endif%}
+						{%endfor%}">
+							<big><span class="fa fa-thumbs-up"></span></big> 
+							<span class="likecount">{{post.likes}}</span>
+						</div>
+					</li>
+					<li class="nav-item">
+						<big><span class="fa fa-comment"></span></big> {{post.comments}}
+					</li>
+				</ul>
+				<div class="ml-auto"><span class="fa fa-history"></span> {{post.created_on.date}}</div>
+			</div>
+			<div class="">
+				<a href="/blog/{{post.id}}/">
+					<button class="btn btn-sm btn-primary btn-block">See This Post</button>
+				</a>
+			</div>
+		  </div>
+		  {%endfor%}
+		    <div class="pagination pt-5">
+		    	<ul class="pagination">
+		    		<li class="page-item {%if not posts.has_previous%}disabled{%endif%}">
+		    			<a href="{%if posts.has_previous%}?page={{posts.previous_page_number}}{%endif%}" class="page-link">Previous</a>
+		    		</li>
+			        {%for page in pages%}
+			        <li class="page-item {%if posts.number == forloop.counter%}active{%endif%}">
+			            <a href="?page={{forloop.counter}}" class="page-link">{{forloop.counter}}</a>
+			        </li>
+			        {%endfor%}
+			        <li class="page-item {%if not posts.has_next%}disabled{%endif%}">
+		    			<a href="{%if posts.has_next%}?page={{posts.next_page_number}}{%endif%}" class="page-link">Next</a>
+		    		</li>
+		    	</ul>
+			</div>
+		 {%endif%}
+		</div>
+
+		<div class="col-md-5">
+			
+			<div class="my-3">
+				<div class="h5 mt-2">Recent Articles<p class="textunderline"></p></div>
+				<ul class="navbar-nav">
+					{%for post in recentposts%}
+					<li class="nav-item">
+						<a href="/blog/{{post.id}}/" class="nav-link recentpostlink">
+							<span class="fa fa-chevron-right"></span> {{post.title}}
+						</a>
+					</li>
+					{%endfor%}
+				</ul>
+			</div>
+			<div class="my-3">
+				<div class="h5 mt-2">Popular Articles<p class="textunderline"></p></div>
+				<ul class="navbar-nav">
+					{%for post in popularposts%}
+					<li class="nav-item">
+						<a href="/blog/{{post.id}}/" class="nav-link recentpostlink">
+							<span class="fa fa-chevron-right"></span> {{post.title}}
+						</a>
+					</li>
+					{%endfor%}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{%endblock%}

@@ -1,0 +1,15 @@
+{%extends 'siteapp/base.html'%}
+{%load static%}
+
+{%block body%}
+<body>
+	<div class="container">
+		Welcome {{user.username}} to <b>Divine Web Solutions</b>, your account has been created successfully. Please click the link below to verify your account.<br>
+		<a href="http://localhost:8000/accounts/verify/{{user.id}}/{{verify_id}}/">V
+			http://localhost:8000/accounts/verify/{{user.id}}/{{verify_id}}/
+		</a>
+		<br><br>
+		Thanks! for being with us, {{user.username}}.
+	</div>
+</body>
+{%endblock%}
